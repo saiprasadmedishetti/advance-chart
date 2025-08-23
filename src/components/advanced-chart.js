@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-import { widget } from "./charting_library";
-import Datafeed from "./datafeed_custom";
+import { widget } from "../charting_library";
+import { datafeed } from "../utils/datafeed";
 
 const TVChartContainer = () => {
   const chartContainerRef = useRef();
@@ -9,7 +9,7 @@ const TVChartContainer = () => {
   useEffect(() => {
     const widgetOptions = {
       symbol: "BTC/USDT",
-      datafeed: Datafeed,
+      datafeed,
       container: chartContainerRef.current,
       library_path: "/charting_library/",
       interval: "5",
@@ -20,7 +20,7 @@ const TVChartContainer = () => {
         "header_symbol_search",
         "symbol_search_hot_key",
       ],
-      enabled_features: [],
+      enabled_features: ["theme"],
       charts_storage_url: "https://saveload.tradingview.com",
       charts_storage_api_version: "1.1",
 

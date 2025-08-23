@@ -27,6 +27,7 @@ export const resolveSymbol = (
       volume_precision: 1,
       data_status: "streaming",
       countBack: 30,
+      theme: "dark",
     };
     onSymbolResolvedCallback(symbolInfo);
   }

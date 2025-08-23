@@ -1,5 +1,4 @@
-import "./App.css";
-import TVChartContainer from "./advanced_chart";
+import TVChartContainer from "./components/advanced-chart";
 function App() {
   return (
     <div className="App">
