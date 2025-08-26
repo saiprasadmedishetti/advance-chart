@@ -1,19 +1,17 @@
 import { useEffect, useRef } from "react";
-
 import { widget } from "../charting_library";
 import { datafeed } from "../utils/datafeed";
 
 const TVChartContainer = () => {
-  const chartContainerRef = useRef();
+  const chartContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const widgetOptions = {
       symbol: "BTC/USDT",
       datafeed,
-      container: chartContainerRef.current,
+      container: chartContainerRef.current as HTMLDivElement,
       library_path: "/charting_library/",
       interval: "5",
-
       locale: "en",
       disabled_features: [
         "use_localstorage_for_settings",
@@ -23,7 +21,6 @@ const TVChartContainer = () => {
       enabled_features: ["theme"],
       charts_storage_url: "https://saveload.tradingview.com",
       charts_storage_api_version: "1.1",
-
       client_id: "tradingview.com",
       user_id: "public_user_id",
       fullscreen: false,
@@ -32,14 +29,13 @@ const TVChartContainer = () => {
       supports_marks: false,
       supports_timescale_marks: false,
       theme: "dark",
-
       overrides: {
         "mainSeriesProperties.statusViewStyle.showInterval": true,
         "mainSeriesProperties.statusViewStyle.symbolTextSource": "ticker",
       },
     };
 
-    const tvWidget = new widget(widgetOptions);
+    const tvWidget = new widget(widgetOptions as any);
 
     return () => {
       tvWidget.remove();
